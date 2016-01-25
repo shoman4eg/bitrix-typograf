@@ -1,0 +1,18 @@
+{
+    "name": "askew-/newkaliningrad.typografru",
+    "description": "Модуль типографирования для нового визуального редактора битрикса, с использованием API сайта typograf.ru",
+    "type": "bitrix-module",
+    "require": {
+        "composer/installers": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Артем Дубинин (askew-)",
+            "email": "askew.39rus@gmail.com"
+        }
+    ],
+    "extra": {
+        "installer-name": "newkaliningrad.typografru"
+    }
+}
