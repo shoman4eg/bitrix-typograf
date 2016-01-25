@@ -1,5 +1,5 @@
 {
-    "name": "askew-/newkaliningrad.typografru",
+    "name": "askew0/newkaliningrad.typografru",
     "description": "Модуль типографирования для нового визуального редактора битрикса, с использованием API сайта typograf.ru",
     "type": "bitrix-module",
     "require": {
