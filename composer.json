@@ -1,8 +1,10 @@
 {
     "name": "askew0/bitrix-typograf.ru",
     "description": "Модуль типографирования для нового визуального редактора битрикса, с использованием API сайта typograf.ru",
+    "keywords": ["bitrix", "typograf"],
     "type": "bitrix-module",
     "require": {
+        "php": ">=5.4.0",
         "composer/installers": "^1.0"
     },
     "license": "MIT",
