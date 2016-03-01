@@ -55,40 +55,38 @@ class newkaliningrad_typografru extends CModule
     }
 
     public function InstallFiles() {
-        $files = [
-            'js' => 'js/' .$this->MODULE_ID. '/typograf.js',
-            'img' => 'images/' .$this->MODULE_ID. '/typograf.gif',
-            'request' => 'tools/' .$this->MODULE_ID. '/typograf.php'
-        ];
-        $rootDir = Application::getDocumentRoot().'/'.Application::getPersonalRoot();
-        foreach ($files as $file) {
-            copy(__DIR__ . $file, $rootDir . $file);
-        }
+
+        $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
+        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images');
+        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js');
+        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools');
     }
 
     public function UnInstallFiles () {
         $files = [
-            'js' => 'js/' .$this->MODULE_ID. '/typograf.js',
-            'img' => 'images/' .$this->MODULE_ID. '/typograf.gif',
-            'request' => 'tools/' .$this->MODULE_ID. '/typograf.php'
+            'js' => '/js/' .$this->MODULE_ID. '/typograf.js',
+            'img' => '/images/' .$this->MODULE_ID. '/typograf.gif',
+            'request' => '/tools/' .$this->MODULE_ID. '/typograf.php'
         ];
-        $rootDir = Application::getDocumentRoot().'/'.Application::getPersonalRoot();
+        $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
 
         foreach ($files as $file) {
             File::deleteFile($rootDir . $file);
         }
     }
 
-    public function doInstall()
+    public function DoInstall()
     {
+        $this->InstallFiles();
         ModuleManager::registerModule($this->MODULE_ID);
         $eventManager = \Bitrix\Main\EventManager::getInstance();
         $eventManager->registerEventHandlerCompatible("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID, '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
     }
 
-    public function doUninstall()
+    public function DoUninstall()
     {
-        ModuleManager::unregisterModule($this->MODULE_ID);
+        $this->UnInstallFiles();
+        ModuleManager::unRegisterModule($this->MODULE_ID);
         $eventManager = \Bitrix\Main\EventManager::getInstance();
         $eventManager->unRegisterEventHandler("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID, '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
     }
