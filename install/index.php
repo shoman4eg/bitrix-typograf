@@ -57,9 +57,9 @@ class newkaliningrad_typografru extends CModule
     public function InstallFiles() {
 
         $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
-        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images');
-        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js');
-        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools');
+        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images', true, true);
+        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js', true, true);
+        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools', true, true);
     }
 
     public function UnInstallFiles () {
