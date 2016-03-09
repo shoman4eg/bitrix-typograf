@@ -63,11 +63,11 @@ class newkaliningrad_typografru extends CModule
     }
 
     public function UnInstallFiles () {
-        $files = [
+        $files = array(
             'js' => '/js/' .$this->MODULE_ID,
             'img' => '/images/' .$this->MODULE_ID,
             'request' => '/tools/' .$this->MODULE_ID
-        ];
+        );
         $rootDir = Application::getDocumentRoot() . '/' . ltrim(Application::getPersonalRoot(), '/');
 
         foreach ($files as $file) {
