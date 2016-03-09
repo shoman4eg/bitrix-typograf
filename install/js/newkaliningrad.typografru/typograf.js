@@ -9,10 +9,10 @@ function applyForEditor(editor) {
     editor.AddButton({
         id: 'typograf',
         src: '/bitrix/images/newkaliningrad.typografru/typograf.gif',
-        name: 'Типограф',
+        name: BX.message('NewKaliningradTypograf.Title'),
         codeEditorMode: true,
         disabledForTextarea: false,
-        title: 'Типограф',
+        title: BX.message('NewKaliningradTypograf.Title'),
         toolbarSort: 310,
         compact: true,
         handler: function () {
