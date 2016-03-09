@@ -42,7 +42,7 @@ class newkaliningrad_typografru extends CModule
     {
         $this->MODULE_ID = 'newkaliningrad.typografru';
         include(__DIR__ . '/version.php');
-        if (is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion))
+        if (isset($arModuleVersion) && is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion))
         {
             $this->MODULE_VERSION = $arModuleVersion['VERSION'];
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
@@ -57,9 +57,9 @@ class newkaliningrad_typografru extends CModule
     public function InstallFiles() {
 
         $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
-        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images');
-        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js');
-        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools');
+        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images', true, true);
+        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js', true, true);
+        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools', true, true);
     }
 
     public function UnInstallFiles () {
