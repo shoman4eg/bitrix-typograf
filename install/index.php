@@ -2,7 +2,7 @@
 defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
 
 use Bitrix\Main\Application;
-use Bitrix\Main\IO\File;
+use Bitrix\Main\IO\Directory;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
 
@@ -63,15 +63,15 @@ class newkaliningrad_typografru extends CModule
     }
 
     public function UnInstallFiles () {
-        $files = [
-            'js' => '/js/' .$this->MODULE_ID. '/typograf.js',
-            'img' => '/images/' .$this->MODULE_ID. '/typograf.gif',
-            'request' => '/tools/' .$this->MODULE_ID. '/typograf.php'
-        ];
-        $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
+        $files = array(
+            'js' => '/js/' .$this->MODULE_ID,
+            'img' => '/images/' .$this->MODULE_ID,
+            'request' => '/tools/' .$this->MODULE_ID
+        );
+        $rootDir = Application::getDocumentRoot() . '/' . ltrim(Application::getPersonalRoot(), '/');
 
         foreach ($files as $file) {
-            File::deleteFile($rootDir . $file);
+            Directory::deleteDirectory($rootDir . $file);
         }
     }
 
