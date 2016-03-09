@@ -42,7 +42,7 @@ class newkaliningrad_typografru extends CModule
     {
         $this->MODULE_ID = 'newkaliningrad.typografru';
         include(__DIR__ . '/version.php');
-        if (is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion))
+        if (isset($arModuleVersion) && is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion))
         {
             $this->MODULE_VERSION = $arModuleVersion['VERSION'];
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
