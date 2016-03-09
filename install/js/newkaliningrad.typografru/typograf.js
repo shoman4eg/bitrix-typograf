@@ -9,10 +9,12 @@ function applyForEditor(editor) {
     editor.AddButton({
         id: 'typograf',
         src: '/bitrix/images/newkaliningrad.typografru/typograf.gif',
-        name: 'typografru',
+        name: 'Типограф',
         codeEditorMode: true,
+        disabledForTextarea: false,
         title: 'Типограф',
-        toolbarSort: 10,
+        toolbarSort: 310,
+        compact: true,
         handler: function () {
             var text = editor.GetContent();
             BX.ajax({
