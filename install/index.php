@@ -42,8 +42,7 @@ class newkaliningrad_typografru extends CModule
     {
         $this->MODULE_ID = 'newkaliningrad.typografru';
         include(__DIR__ . '/version.php');
-        if (isset($arModuleVersion) && is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion))
-        {
+        if (isset($arModuleVersion) && is_array($arModuleVersion) && array_key_exists('VERSION', $arModuleVersion)) {
             $this->MODULE_VERSION = $arModuleVersion['VERSION'];
             $this->MODULE_VERSION_DATE = $arModuleVersion['VERSION_DATE'];
         }
@@ -54,19 +53,21 @@ class newkaliningrad_typografru extends CModule
         $this->PARTNER_URI = "https://www.newkaliningrad.ru";
     }
 
-    public function InstallFiles() {
+    public function InstallFiles()
+    {
 
-        $rootDir = Application::getDocumentRoot().'/'. ltrim(Application::getPersonalRoot(), '/');
-        CopyDirFiles(__DIR__ . '/images' , $rootDir . '/images', true, true);
-        CopyDirFiles(__DIR__ . '/js' , $rootDir . '/js', true, true);
-        CopyDirFiles(__DIR__ . '/tools' , $rootDir . '/tools', true, true);
+        $rootDir = Application::getDocumentRoot() . '/' . ltrim(Application::getPersonalRoot(), '/');
+        CopyDirFiles(__DIR__ . '/images', $rootDir . '/images', true, true);
+        CopyDirFiles(__DIR__ . '/js', $rootDir . '/js', true, true);
+        CopyDirFiles(__DIR__ . '/tools', $rootDir . '/tools', true, true);
     }
 
-    public function UnInstallFiles () {
+    public function UnInstallFiles()
+    {
         $files = array(
-            'js' => '/js/' .$this->MODULE_ID,
-            'img' => '/images/' .$this->MODULE_ID,
-            'request' => '/tools/' .$this->MODULE_ID
+            'js' => '/js/' . $this->MODULE_ID,
+            'img' => '/images/' . $this->MODULE_ID,
+            'request' => '/tools/' . $this->MODULE_ID
         );
         $rootDir = Application::getDocumentRoot() . '/' . ltrim(Application::getPersonalRoot(), '/');
 
@@ -80,7 +81,8 @@ class newkaliningrad_typografru extends CModule
         $this->InstallFiles();
         ModuleManager::registerModule($this->MODULE_ID);
         $eventManager = \Bitrix\Main\EventManager::getInstance();
-        $eventManager->registerEventHandlerCompatible("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID, '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
+        $eventManager->registerEventHandlerCompatible("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID,
+            '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
     }
 
     public function DoUninstall()
@@ -88,6 +90,7 @@ class newkaliningrad_typografru extends CModule
         $this->UnInstallFiles();
         ModuleManager::unRegisterModule($this->MODULE_ID);
         $eventManager = \Bitrix\Main\EventManager::getInstance();
-        $eventManager->unRegisterEventHandler("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID, '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
+        $eventManager->unRegisterEventHandler("fileman", "OnBeforeHTMLEditorScriptRuns", $this->MODULE_ID,
+            '\Newkaliningrad\Typografru\Typograf', "onBeforeHTMLEditorScriptRuns");
     }
 }

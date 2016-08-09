@@ -10,10 +10,14 @@ class Typograf
 {
     public static function onBeforeHTMLEditorScriptRuns()
     {
-        Asset::getInstance()->addJs('/bitrix/js/newkaliningrad.typografru/typograf.js');
+        $asset = Asset::getInstance();
+        $asset->addJs('/bitrix/js/newkaliningrad.typografru/typograf.js');
 
         $messages = Loc::loadLanguageFile(Path::normalize(__FILE__));
-        echo '<script>BX.message(' . Json::encode($messages, JSON_FORCE_OBJECT|JSON_UNESCAPED_UNICODE) . ');</script>';
+        $asset->addString(
+            sprintf('<script>BX.message(%s)</script>',
+                Json::encode($messages, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE)
+            )
+        );
     }
-
 }

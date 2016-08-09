@@ -1,2 +1,3 @@
 <?php
-$MESS['NewKaliningradTypograf.Title'] = "Типограф";
+$MESS['NEWKALININGRAD_TYPOGRAF_TITLE'] = "Типограф";
+
